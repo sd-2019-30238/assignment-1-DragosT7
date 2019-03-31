@@ -50,6 +50,8 @@
             this.signOutButton = new System.Windows.Forms.Button();
             this.updateOrderStatusButton = new System.Windows.Forms.Button();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
+            this.discountComboBox = new System.Windows.Forms.ComboBox();
+            this.applyDiscountButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordersGridView)).BeginInit();
             this.SuspendLayout();
@@ -91,7 +93,7 @@
             this.ordersGridView.Location = new System.Drawing.Point(813, 81);
             this.ordersGridView.Name = "ordersGridView";
             this.ordersGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ordersGridView.Size = new System.Drawing.Size(453, 320);
+            this.ordersGridView.Size = new System.Drawing.Size(433, 320);
             this.ordersGridView.TabIndex = 3;
             this.ordersGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordersGridView_CellContentClick);
             // 
@@ -234,7 +236,7 @@
             // 
             // updateOrderStatusButton
             // 
-            this.updateOrderStatusButton.Location = new System.Drawing.Point(980, 515);
+            this.updateOrderStatusButton.Location = new System.Drawing.Point(1069, 515);
             this.updateOrderStatusButton.Name = "updateOrderStatusButton";
             this.updateOrderStatusButton.Size = new System.Drawing.Size(147, 48);
             this.updateOrderStatusButton.TabIndex = 20;
@@ -245,11 +247,30 @@
             // statusComboBox
             // 
             this.statusComboBox.FormattingEnabled = true;
-            this.statusComboBox.Location = new System.Drawing.Point(991, 444);
+            this.statusComboBox.Location = new System.Drawing.Point(1069, 444);
             this.statusComboBox.Name = "statusComboBox";
             this.statusComboBox.Size = new System.Drawing.Size(121, 21);
             this.statusComboBox.TabIndex = 21;
             this.statusComboBox.SelectedIndexChanged += new System.EventHandler(this.statusComboBox_SelectedIndexChanged);
+            // 
+            // discountComboBox
+            // 
+            this.discountComboBox.FormattingEnabled = true;
+            this.discountComboBox.Location = new System.Drawing.Point(839, 444);
+            this.discountComboBox.Name = "discountComboBox";
+            this.discountComboBox.Size = new System.Drawing.Size(121, 21);
+            this.discountComboBox.TabIndex = 22;
+            this.discountComboBox.SelectedIndexChanged += new System.EventHandler(this.discountComboBox_SelectedIndexChanged);
+            // 
+            // applyDiscountButton
+            // 
+            this.applyDiscountButton.Location = new System.Drawing.Point(839, 515);
+            this.applyDiscountButton.Name = "applyDiscountButton";
+            this.applyDiscountButton.Size = new System.Drawing.Size(144, 48);
+            this.applyDiscountButton.TabIndex = 23;
+            this.applyDiscountButton.Text = "Apply Discount";
+            this.applyDiscountButton.UseVisualStyleBackColor = true;
+            this.applyDiscountButton.Click += new System.EventHandler(this.applyDiscountButton_Click);
             // 
             // AdminDashboardForm
             // 
@@ -257,6 +278,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1413, 971);
+            this.Controls.Add(this.applyDiscountButton);
+            this.Controls.Add(this.discountComboBox);
             this.Controls.Add(this.statusComboBox);
             this.Controls.Add(this.updateOrderStatusButton);
             this.Controls.Add(this.signOutButton);
@@ -312,5 +335,7 @@
         private System.Windows.Forms.Button signOutButton;
         private System.Windows.Forms.Button updateOrderStatusButton;
         private System.Windows.Forms.ComboBox statusComboBox;
+        private System.Windows.Forms.ComboBox discountComboBox;
+        private System.Windows.Forms.Button applyDiscountButton;
     }
 }

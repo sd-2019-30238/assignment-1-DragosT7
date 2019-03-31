@@ -158,6 +158,44 @@ namespace BestFurnitureDeals2._0.BusinessLogic
             }
         }
 
+        public void UpdateTotalPriceAfterDiscount(float priceCart, int id)
+        {
+            string queryString = "UPDATE dbo.Orders set totalprice = @totalprice where id = @id;";
+            using (var connection = DBConnection.GetConnection)
+            {
+                var command = new SqlCommand(queryString, connection);
+                command.Parameters.Add("@totalprice", SqlDbType.Float);
+                command.Parameters["@totalprice"].Value = priceCart;
+                command.Parameters.Add("@id", SqlDbType.Int);
+                command.Parameters["@id"].Value = id;
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+       public float GetTotalPriceFromOrderID(int id)
+        {
+            string queryString = "SELECT totalprice FROM dbo.Orders WHERE id = @id;";
+            using (var connection = DBConnection.GetConnection)
+            {
+                var command = new SqlCommand(queryString, connection);
+                command.Parameters.Add("@id", SqlDbType.Int);
+                command.Parameters["@id"].Value = id;
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        float price = (float)reader.GetDouble(0);
+                        return price;
+                    }
+                }
+                connection.Close();
+            }
+            return 0f;
+        }
+
         public string CalculateCartPrice(int orderID)
         {
             string cartPrice;

@@ -1,4 +1,5 @@
 ﻿using BestFurnitureDeals2._0.BusinessLogic;
+using BestFurnitureDeals2._0.BusinessLogic.Factory;
 using BestFurnitureDeals2._0.Commons;
 using BestFurnitureDeals2._0.DataAccess.DataAccessObjects;
 using System;
@@ -20,6 +21,7 @@ namespace BestFurnitureDeals2._0.PresentationLayer
         int id;
         int furnitureID;
         private string statusOrder;
+        private int discountOrder;
 
         public AdminDashboardForm()
         {
@@ -31,6 +33,9 @@ namespace BestFurnitureDeals2._0.PresentationLayer
             this.statusComboBox.Items.Add(orderController.RetrieveStatusProcessing);
             this.statusComboBox.Items.Add(orderController.RetrieveStatusDelivering);
             this.statusComboBox.Items.Add(orderController.RetrieveStatusDelivered);
+            this.discountComboBox.Items.Add(5.ToString());
+            this.discountComboBox.Items.Add(10.ToString());
+            this.discountComboBox.Items.Add(15.ToString());
         }
 
         private void loadDataGridView()
@@ -122,6 +127,22 @@ namespace BestFurnitureDeals2._0.PresentationLayer
                 this.id = int.Parse(dataGridViewRow.Cells["Order Number"].Value.ToString());
                 this.statusOrder = dataGridViewRow.Cells["Order Status"].Value.ToString();
             }
+        }
+
+        private void discountComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            discountOrder = int.Parse(this.discountComboBox.SelectedItem.ToString());
+        }
+
+        private void applyDiscountButton_Click(object sender, EventArgs e)
+        {
+            // discountOrder este un int -> il voi folosi in acel switch de la factory
+            var typeDiscount = DealServiceFactory.GetDeal(discountOrder);
+            Console.WriteLine(typeDiscount);
+            var newPrice = typeDiscount.ComputeDeal(orderController.GetTotalPriceFromOrderID(id));
+            Console.WriteLine(newPrice);
+            this.orderController.UpdateTotalPriceAfterDiscount(newPrice, id);
+            this.loadOrdersGridView();
         }
     }
 }

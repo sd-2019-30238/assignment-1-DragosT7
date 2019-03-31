@@ -47,6 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\Factory\DealService.cs" />
+    <Compile Include="BusinessLogic\Factory\DealServiceFactory.cs" />
+    <Compile Include="BusinessLogic\Factory\FifteenPercentDiscount.cs" />
+    <Compile Include="BusinessLogic\Factory\FivePercentDiscount.cs" />
+    <Compile Include="BusinessLogic\Factory\TenPercentDiscount.cs" />
     <Compile Include="BusinessLogic\FurnitureController.cs" />
     <Compile Include="BusinessLogic\OrderController.cs" />
     <Compile Include="BusinessLogic\UserController.cs" />
