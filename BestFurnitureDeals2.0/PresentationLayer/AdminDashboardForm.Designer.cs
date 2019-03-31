@@ -60,6 +60,7 @@
             this.furnitureGridView.Location = new System.Drawing.Point(42, 93);
             this.furnitureGridView.MultiSelect = false;
             this.furnitureGridView.Name = "furnitureGridView";
+            this.furnitureGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.furnitureGridView.Size = new System.Drawing.Size(623, 320);
             this.furnitureGridView.TabIndex = 0;
             this.furnitureGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.furnitureGridView_CellContentClick);
