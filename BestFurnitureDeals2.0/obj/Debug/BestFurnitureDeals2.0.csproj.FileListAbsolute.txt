@@ -1,0 +1,13 @@
+C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\bin\Debug\BestFurnitureDeals2.0.exe.config
+C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\bin\Debug\BestFurnitureDeals2.0.exe
+C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\bin\Debug\BestFurnitureDeals2.0.pdb
+C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Debug\BestFurnitureDeals2.0.csprojAssemblyReference.cache
+C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Debug\BestFurnitureDeals2._0.Properties.Resources.resources
+C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Debug\BestFurnitureDeals2.0.csproj.GenerateResource.cache
+C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Debug\BestFurnitureDeals2.0.csproj.CoreCompileInputs.cache
+C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Debug\BestFurnitureDeals2.0.exe
+C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Debug\BestFurnitureDeals2.0.pdb
+C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Debug\BestFurnitureDeals2._0.PresentationLayer.Authentication.resources
+C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Debug\BestFurnitureDeals2._0.PresentationLayer.SignUpForm.resources
+C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Debug\BestFurnitureDeals2._0.PresentationLayer.AdminDashboardForm.resources
+C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Debug\BestFurnitureDeals2._0.PresentationLayer.ClientViewForm.resources
