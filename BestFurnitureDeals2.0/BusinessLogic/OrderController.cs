@@ -217,6 +217,25 @@ namespace BestFurnitureDeals2._0.BusinessLogic
             }
         }
 
+        public DataTable DisplayAllOrdersInClientDash(int userID)
+        {
+            using (var connection = DBConnection.GetConnection)
+            {
+                connection.Open();
+                SqlCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = String.Format("SELECT id as 'Order ID', totalprice as 'Order Price', statusorder as 'Order Status', orderfeedback as 'Feedback'" +
+                    "FROM dbo.Orders WHERE userID = {0} and statusorder NOT LIKE @statusorder;", userID);
+                cmd.Parameters.Add("@statusorder", SqlDbType.VarChar);
+                cmd.Parameters["@statusorder"].Value = ORDER_CREATING;
+                cmd.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
         public int GetOrderID(int userID)
         {
             using (var connection = DBConnection.GetConnection)
@@ -250,6 +269,20 @@ namespace BestFurnitureDeals2._0.BusinessLogic
             }
         }
 
-       
+        public void GiveFeedbackToOrder(int orderID, string orderfeedback)
+        {
+            string queryString = "UPDATE dbo.Orders set orderfeedback = @orderfeedback where id = @id";
+            using (var connection = DBConnection.GetConnection)
+            {
+                var command = new SqlCommand(queryString, connection);
+                command.Parameters.Add("@orderfeedback", SqlDbType.VarChar);
+                command.Parameters["@orderfeedback"].Value = orderfeedback;
+                command.Parameters.Add("@id", SqlDbType.Int);
+                command.Parameters["@id"].Value = orderID;
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
     }
 }

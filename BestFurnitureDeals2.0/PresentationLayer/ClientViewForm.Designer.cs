@@ -36,6 +36,7 @@
             this.deleteFromCartButton = new System.Windows.Forms.Button();
             this.checkoutButton = new System.Windows.Forms.Button();
             this.signOutButton = new System.Windows.Forms.Button();
+            this.orderHistoryButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.availableDealsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cartGridView)).BeginInit();
             this.SuspendLayout();
@@ -119,11 +120,22 @@
             this.signOutButton.UseVisualStyleBackColor = true;
             this.signOutButton.Click += new System.EventHandler(this.signOutButton_Click);
             // 
+            // orderHistoryButton
+            // 
+            this.orderHistoryButton.Location = new System.Drawing.Point(77, 413);
+            this.orderHistoryButton.Name = "orderHistoryButton";
+            this.orderHistoryButton.Size = new System.Drawing.Size(135, 23);
+            this.orderHistoryButton.TabIndex = 9;
+            this.orderHistoryButton.Text = "See your orders";
+            this.orderHistoryButton.UseVisualStyleBackColor = true;
+            this.orderHistoryButton.Click += new System.EventHandler(this.orderHistoryButton_Click);
+            // 
             // ClientViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1194, 507);
+            this.Controls.Add(this.orderHistoryButton);
             this.Controls.Add(this.signOutButton);
             this.Controls.Add(this.checkoutButton);
             this.Controls.Add(this.deleteFromCartButton);
@@ -133,7 +145,7 @@
             this.Controls.Add(this.availableDealsDataGrid);
             this.Controls.Add(this.availableDealsLabel);
             this.Name = "ClientViewForm";
-            this.Text = "ClientViewForm";
+            this.Text = "Furniture Deals";
             ((System.ComponentModel.ISupportInitialize)(this.availableDealsDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cartGridView)).EndInit();
             this.ResumeLayout(false);
@@ -151,5 +163,6 @@
         private System.Windows.Forms.Button deleteFromCartButton;
         private System.Windows.Forms.Button checkoutButton;
         private System.Windows.Forms.Button signOutButton;
+        private System.Windows.Forms.Button orderHistoryButton;
     }
 }

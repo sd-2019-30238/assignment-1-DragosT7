@@ -100,5 +100,13 @@ namespace BestFurnitureDeals2._0.PresentationLayer
                 this.loadOrderItemsGridView();
             }
         }
+
+        private void orderHistoryButton_Click(object sender, EventArgs e)
+        {
+            OrderHistoryForm orderHistoryForm = new OrderHistoryForm();
+            orderHistoryForm.Show();
+            Utils.PrevForm = this;
+            this.Hide();
+        }
     }
 }

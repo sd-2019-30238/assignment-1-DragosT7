@@ -28,7 +28,6 @@ namespace BestFurnitureDeals2._0.PresentationLayer
             this.orderController = Utils.OrderController;
             this.loadDataGridView();
             this.loadOrdersGridView();
-            this.statusComboBox.Items.Add(orderController.RetrieveStatusCreating);
             this.statusComboBox.Items.Add(orderController.RetrieveStatusProcessing);
             this.statusComboBox.Items.Add(orderController.RetrieveStatusDelivering);
             this.statusComboBox.Items.Add(orderController.RetrieveStatusDelivered);

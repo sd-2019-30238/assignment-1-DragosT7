@@ -11,3 +11,4 @@ C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Deb
 C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Debug\BestFurnitureDeals2._0.PresentationLayer.SignUpForm.resources
 C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Debug\BestFurnitureDeals2._0.PresentationLayer.AdminDashboardForm.resources
 C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Debug\BestFurnitureDeals2._0.PresentationLayer.ClientViewForm.resources
+C:\Users\Dragos\source\repos\BestFurnitureDeals2.0\BestFurnitureDeals2.0\obj\Debug\BestFurnitureDeals2._0.PresentationLayer.OrderHistoryForm.resources
