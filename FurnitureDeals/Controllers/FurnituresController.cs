@@ -54,5 +54,63 @@ namespace FurnitureDeals.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
         }
+
+        public HttpResponseMessage Delete(int id)
+        {
+            try
+            {
+                using (FurnitureEntities entities = new FurnitureEntities())
+                {
+                    var entity = entities.Furnitures.FirstOrDefault(f => f.id == id);
+                    if (entity == null)
+                    {
+                        return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Furniture with id = " + id.ToString() + " was not found to be deleted");
+                    }
+                    else
+                    {
+                        entities.Furnitures.Remove(entity);
+                        entities.SaveChanges();
+                        return Request.CreateResponse(HttpStatusCode.OK);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
+        public HttpResponseMessage Put(int id, [FromBody]Furniture furniture)
+        {
+            try
+            {
+                using (FurnitureEntities entities = new FurnitureEntities())
+                {
+                    var entity = entities.Furnitures.FirstOrDefault(f => f.id == id);
+
+                    if (entity == null)
+                    {
+                        return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Furniture with id = " + id.ToString() + " was not found to be updated");
+                    }
+                    else
+                    {
+                        entity.namefurniture = furniture.namefurniture;
+                        entity.descriptionfurniture = furniture.descriptionfurniture;
+                        entity.typefurniture = furniture.typefurniture;
+                        entity.price = furniture.price;
+                        entity.seller = furniture.seller;
+                        entity.nrofproducts = furniture.nrofproducts;
+
+                        entities.SaveChanges();
+                        return Request.CreateResponse(HttpStatusCode.OK, entity);
+                    }
+
+                }
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
     }
 }
