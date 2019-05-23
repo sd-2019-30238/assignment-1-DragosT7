@@ -1,0 +1,12 @@
+C:\Users\Dragos\source\repos\FurnitureDeals\FurnitureDataAccess\bin\Debug\FurnitureDataAccess.dll.config
+C:\Users\Dragos\source\repos\FurnitureDeals\FurnitureDataAccess\bin\Debug\FurnitureDataAccess.dll
+C:\Users\Dragos\source\repos\FurnitureDeals\FurnitureDataAccess\bin\Debug\FurnitureDataAccess.pdb
+C:\Users\Dragos\source\repos\FurnitureDeals\FurnitureDataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Dragos\source\repos\FurnitureDeals\FurnitureDataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dragos\source\repos\FurnitureDeals\FurnitureDataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Dragos\source\repos\FurnitureDeals\FurnitureDataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dragos\source\repos\FurnitureDeals\FurnitureDataAccess\obj\Debug\FurnitureDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Dragos\source\repos\FurnitureDeals\FurnitureDataAccess\obj\Debug\FurnitureDataAccess.csproj.CopyComplete
+C:\Users\Dragos\source\repos\FurnitureDeals\FurnitureDataAccess\obj\Debug\FurnitureDataAccess.dll
+C:\Users\Dragos\source\repos\FurnitureDeals\FurnitureDataAccess\obj\Debug\FurnitureDataAccess.pdb
+C:\Users\Dragos\source\repos\FurnitureDeals\FurnitureDataAccess\obj\Debug\FurnitureDataAccess.csprojAssemblyReference.cache
