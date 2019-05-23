@@ -18,11 +18,40 @@ namespace FurnitureDeals.Controllers
             }
         }
 
-        public Furniture Get(int id)
+        public HttpResponseMessage Get(int id)
         {
             using (FurnitureEntities entities = new FurnitureEntities())
             {
-                return entities.Furnitures.FirstOrDefault(f => f.id == id);
+                var entity = entities.Furnitures.FirstOrDefault(f => f.id == id);
+
+                if (entity != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entity);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Furniture with id = " + id.ToString() + " was not found");
+                }
+            }
+        }
+
+        public HttpResponseMessage Post([FromBody] Furniture furniture)
+        {
+            try
+            {
+                using (FurnitureEntities entities = new FurnitureEntities())
+                {
+                    entities.Furnitures.Add(furniture);
+                    entities.SaveChanges();
+
+                    var message = Request.CreateResponse(HttpStatusCode.Created, furniture);
+                    message.Headers.Location = new Uri(Request.RequestUri + furniture.id.ToString());
+                    return message;
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
         }
     }
