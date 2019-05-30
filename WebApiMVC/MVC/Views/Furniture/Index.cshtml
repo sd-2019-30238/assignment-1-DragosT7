@@ -1,0 +1,81 @@
+﻿@model IEnumerable<MVC.Models.mvcFurnitureModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+
+<p>
+    <a href="@Url.Action("AddOrEdit", "Furniture")" class="btn-default"><i class="fa fa-plus"></i>Create New</a>
+</p>
+<table class="table table-striped">
+    <thead class="table-heading"></thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.namefurniture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descriptionfurniture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.typefurniture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.seller)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nrofproducts)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.namefurniture)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descriptionfurniture)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.typefurniture)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.seller)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nrofproducts)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.id }) |*@
+            @*@Html.ActionLink("Details", "Details", new { id=item.id }) |*@
+            <a href="@Url.Action("AddOrEdit", "Furniture", new {id = item.id})" class="btn btn-default"><i class="fa fa-pencil">Edit</i> </a>
+            <a onclick="Delete(@item.id)" class="btn btn-default"><i class="fa fa-trash">Delete</i> </a>
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.id })*@
+        </td>
+    </tr>
+}
+
+</table>
+
+@section scripts{
+    <script>
+        $(function () {
+            var successMessage = '@TempData["SuccessMessage"]'
+            if (successMessage != '')
+                alertify.success(successMessage);
+        });
+
+        function Delete(id) {
+            alertify.confirm('Web Api CRUD Operations', 'Are you sure to delete this record?', function () {
+                window.location.href = '@Url.Action("Delete", "Furniture")/' + id;
+            }, null);
+        }
+    </script>
+    }

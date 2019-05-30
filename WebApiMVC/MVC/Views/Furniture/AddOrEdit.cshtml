@@ -1,0 +1,57 @@
+﻿@model MVC.Models.mvcFurnitureModel
+@{
+    ViewBag.Title = "AddOrEdit";
+}
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.id)
+        <div class="form-group">
+            @Html.LabelFor(model => model.namefurniture)
+            @Html.EditorFor(model => model.namefurniture)
+            @Html.ValidationMessageFor(model => model.namefurniture)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.typefurniture)
+            @Html.EditorFor(model => model.typefurniture)
+            @Html.ValidationMessageFor(model => model.typefurniture)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.descriptionfurniture)
+            @Html.EditorFor(model => model.descriptionfurniture)
+            @Html.ValidationMessageFor(model => model.descriptionfurniture)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.seller)
+            @Html.EditorFor(model => model.seller)
+            @Html.ValidationMessageFor(model => model.seller)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nrofproducts)
+            @Html.EditorFor(model => model.nrofproducts)
+            @Html.ValidationMessageFor(model => model.nrofproducts)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.price)
+            @Html.EditorFor(model => model.price)
+            @Html.ValidationMessageFor(model => model.price)
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn button" />
+            <input type="reset" value="Reset" class="btn button" />
+        </div>
+    }
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+    }
+
+

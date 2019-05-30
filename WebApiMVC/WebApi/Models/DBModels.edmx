@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FurnitureModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Furnitures">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="namefurniture" Type="varchar" MaxLength="50" />
+          <Property Name="descriptionfurniture" Type="varchar" MaxLength="255" />
+          <Property Name="typefurniture" Type="varchar" MaxLength="100" />
+          <Property Name="price" Type="float" />
+          <Property Name="seller" Type="varchar" MaxLength="100" />
+          <Property Name="nrofproducts" Type="int" />
+        </EntityType>
+        <EntityContainer Name="FurnitureModelStoreContainer">
+          <EntitySet Name="Furnitures" EntityType="Self.Furnitures" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FurnitureModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Furniture">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="namefurniture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descriptionfurniture" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="typefurniture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Double" />
+          <Property Name="seller" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nrofproducts" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="DBModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Furnitures" EntityType="Self.Furniture" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FurnitureModelStoreContainer" CdmEntityContainer="DBModel">
+          <EntitySetMapping Name="Furnitures">
+            <EntityTypeMapping TypeName="FurnitureModel.Furniture">
+              <MappingFragment StoreEntitySet="Furnitures">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="namefurniture" ColumnName="namefurniture" />
+                <ScalarProperty Name="descriptionfurniture" ColumnName="descriptionfurniture" />
+                <ScalarProperty Name="typefurniture" ColumnName="typefurniture" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="seller" ColumnName="seller" />
+                <ScalarProperty Name="nrofproducts" ColumnName="nrofproducts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
