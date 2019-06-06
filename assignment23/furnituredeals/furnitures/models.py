@@ -7,7 +7,7 @@ class Furniture(models.Model):
     description = models.TextField()
     oldPrice = models.PositiveIntegerField()
     newPrice = models.PositiveIntegerField()
-    saleType = models.CharField(max_length=25)
+    saleType = models.CharField(max_length=50)
     quantity = models.PositiveIntegerField()
     slug = models.SlugField()
 
