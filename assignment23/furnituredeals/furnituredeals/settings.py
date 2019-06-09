@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ["localhost"]
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'furnitures.apps.FurnituresConfig',
+    'orders.apps.OrdersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

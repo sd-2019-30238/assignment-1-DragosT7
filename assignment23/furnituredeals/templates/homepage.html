@@ -1,10 +1,30 @@
+{% load static from staticfiles %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-
+    <h2>Welcome to our furniture deals shop. </h2>
+    <h3>Login in order to buy </h3>
+    <nav>
+        <ul>
+            <li>
+                <form class="login-link" action="{% url 'accounts:login' %}" method="get">
+                    {% csrf_token %}
+                    <button type="submit">Login</button>
+                </form>
+            </li>
+            <li>
+                <form class="signup-link" action="{% url 'accounts:signup' %}" method="get">
+                    {% csrf_token %}
+                    <button type="submit">Sign Up</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
 </body>
 </html>

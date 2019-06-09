@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from furnitures.models import Furniture
+from orders.models import Order, ScaunDecorator, HamacDecorator
 
 class RequestAllFurnitures:
     def __init__(self, request, filterType="name"):
@@ -35,9 +36,106 @@ class RequestSpecificFurnitureHandle:
         return render(requestObject.getRequest(), 'furnitures/furnitures_detail.html', {'furniture': furniture})
 
 
-handlerDictionary = {"RequestAllFurnitures": RequestAllFurnituresHandle,
-                     "RequestSpecificFurniture": RequestSpecificFurnitureHandle,
-                    }
+
 class Mediator:
     def mediate(self, requestObject):
         return handlerDictionary[requestObject.__class__.__name__]().handle(requestObject)
+
+class ModifyFurnitureQuantityQuery:
+    def __init__(self, slug):
+        self.slug = slug
+    def getSlug(self):
+        return self.slug
+
+class ModifyFurnitureQuantityQueryHandle:
+    def handle(self, requestObj):
+        temp_furniture = Furniture.objects.get(slug=requestObj.getSlug())
+        temp_furniture.quantity = temp_furniture.quantity - 1
+        temp_furniture.save()
+
+class AddOrderRequest:
+    def __init__(self, furnitureSlug, user, status, bonus):
+        self.furnitureSlug = furnitureSlug
+        self.user = user
+        self.status = status
+        self.bonus = bonus
+    def getFurnitureSlug(self):
+        return self.furnitureSlug
+    def getUser(self):
+        return self.user
+    def getStatus(self):
+        return self.status
+    def getBonus(self):
+        return self.bonus
+
+class AddOrderRequestHandle:
+    def handle(self, requestObj):
+        order = Order()
+        order.furniture = Furniture.objects.get(slug=requestObj.getFurnitureSlug())
+        order.client = requestObj.getUser()
+        order.status = requestObj.getStatus()
+        # order.save()
+        if "faraBonus" in requestObj.getBonus():
+            order.bonus = "Nu are bonus"
+            order.save()
+        elif "scaun" in requestObj.getBonus():
+            decoratedOrder = ScaunDecorator(order)
+            (decoratedOrder.order).save()
+        else:
+            decoratedOrder = HamacDecorator(order)
+            (decoratedOrder.order).save()
+
+class RequestAllOrders:
+    def __init__(self, request, filterType="id"):
+        self.request = request
+        self.filterType = filterType
+    def getRequest(self):
+        return self.request
+    def getFilterType(self):
+        return self.filterType
+
+class RequestAllOrdersHandle:
+    def handle(self, requestObj):
+        orders = Order.objects.all().order_by('id')
+        if not requestObj.getRequest().user.is_staff:
+            orders = [item for item in orders if requestObj.getRequest().user == item.client]
+        return render(requestObj.getRequest(), 'orders/list_orders.html', {'orders':orders})
+
+class RequestSpecificOrder:
+    def __init__(self, request, id):
+        self.request = request
+        self.id = id
+    def getRequest(self):
+        return self.request
+    def getId(self):
+        return self.id
+
+class RequestSpecificOrderHandle:
+    def handle(self, requestObj):
+        order = Order.objects.get(id=requestObj.getId())
+        return render(requestObj.getRequest(), 'orders/order_details.html', {'order':order})
+
+
+class RequestModifySpecificOrder:
+    def __init__(self, id, newStatus):
+        self.id = id
+        self.newStatus = newStatus
+    def getId(self):
+        return self.id
+    def getNewStatus(self):
+        return self.newStatus
+
+class RequestModifySpecificOrderHandle:
+    def handle(self, requestObj):
+        order = Order.objects.get(id=requestObj.getId())
+        order.status = requestObj.getNewStatus()
+        order.save()
+
+handlerDictionary = {"RequestAllFurnitures": RequestAllFurnituresHandle,
+                     "RequestSpecificFurniture": RequestSpecificFurnitureHandle,
+                     "ModifyFurnitureQuantityQuery":ModifyFurnitureQuantityQueryHandle,
+                     "AddOrderRequest":AddOrderRequestHandle,
+                     "RequestAllOrders":RequestAllOrdersHandle,
+                     "RequestSpecificOrder":RequestSpecificOrderHandle,
+                     "RequestModifySpecificOrder":RequestModifySpecificOrderHandle
+                    }

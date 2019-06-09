@@ -1,0 +1,21 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+<div class="furniture-detail">
+    <div class="furniture">
+        <h2>Nume produs: {{ furniture.name }}</h2>
+        <p>Descrierea produsului: {{ furniture.description }}</p>
+        <p>Pret vechi: {{ furniture.oldPrice }}</p>
+        <p>Pret nou: {{ furniture.newPrice }}</p>
+        <p>Tip reducere: {{ furniture.saleType }}</p>
+        <p>Cantitate disponibila: {{ furniture.quantity }}</p>
+        <form class="order-form" action="{% 'orders:add_order' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="product" value="{{ furniture.slug }}">
+            <select class="options" name="bonus">
+                <option value="faraBonus">None</option>
+            </select>
+            <input type="submit" value="Add order">
+        </form>
+    </div>
+</div>
+{% endblock %}

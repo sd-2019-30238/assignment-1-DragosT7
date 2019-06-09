@@ -1,0 +1,24 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+    <form class="filter-items" action="{% url 'furnitures:list' %}" method="post">
+        {% csrf_token %}
+        <select class="filters" name="filter">
+            <option value="name">Name</option>
+            <option value="newPrice">Price</option>
+            <option value="saleType">Sale Type</option>
+        </select>
+        <input type="submit" value="Filter">
+    </form>
+    <h1>Lista produselor disponibile:</h1>
+    <div class="furnitures">
+        {% for furniture in furnitures %}
+        <div class="furniture">
+            <h2><a href="{% url 'furnitures:detail' slug=furniture.slug %}">{{ furniture.name }}</a></h2>
+            <p>{{ furniture.getSnippet }}</p>
+            <p>Old price: {{ furniture.oldPrice }}</p>
+            <p>New price: {{ furniture.newPrice }}</p>
+            <p>Sale Type: {{ furniture.saleType }}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
